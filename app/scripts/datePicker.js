@@ -333,12 +333,16 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
 
             if (angular.isDefined(data.minDate)) {
               minDate = data.minDate ? createMoment(data.minDate) : false;
-              if (minDate) scope.viewDate = clipDate(scope.viewDate);
+              if (minDate) {
+                scope.viewDate = clipDate(scope.viewDate);
+              }
               updateViewData = true;
             }
             if (angular.isDefined(data.maxDate)) {
               maxDate = data.maxDate ? data.maxDate : false;
-              if (maxDate) scope.viewDate = clipDate(scope.viewDate);
+              if (maxDate) {
+                scope.viewDate = clipDate(scope.viewDate);
+              }
               updateViewData = true;
             }
 

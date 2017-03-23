@@ -83,8 +83,18 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
         isNow,
         inValidRange;
 
-      scope.modelDate = scope.model ? createMoment(scope.model) : null;
-      scope.viewDate = createMoment(scope.model || now);
+      clipDate = function (date) {
+        if (minDate && minDate.isAfter(date)) {
+          return minDate;
+        } else if (maxDate && maxDate.isBefore(date)) {
+          return maxDate;
+        } else {
+          return date;
+        }
+      };
+
+      scope.modelDate = scope.model ? clipDate(createMoment(scope.model)) : null;
+      scope.viewDate = clipDate(createMoment(scope.model || now));
 
       datePickerUtils.setParams(tz, firstDay);
 
@@ -288,15 +298,7 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
         return date1.isSame(date2, datePickerConfig.momentNames[scope.view]) ? true : false;
       };
 
-      clipDate = function (date) {
-        if (minDate && minDate.isAfter(date)) {
-          return minDate;
-        } else if (maxDate && maxDate.isBefore(date)) {
-          return maxDate;
-        } else {
-          return date;
-        }
-      };
+
 
       isNow = function (date, view) {
         var is = true;
@@ -330,11 +332,17 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
             var updateViews = false, updateViewData = false;
 
             if (angular.isDefined(data.minDate)) {
-              minDate = data.minDate ? data.minDate : false;
+              minDate = data.minDate ? createMoment(data.minDate) : false;
+              if (minDate) {
+                scope.viewDate = clipDate(scope.viewDate);
+              }
               updateViewData = true;
             }
             if (angular.isDefined(data.maxDate)) {
               maxDate = data.maxDate ? data.maxDate : false;
+              if (maxDate) {
+                scope.viewDate = clipDate(scope.viewDate);
+              }
               updateViewData = true;
             }
 
