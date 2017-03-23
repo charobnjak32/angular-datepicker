@@ -7,6 +7,7 @@ angular.module('datePicker').factory('datePickerUtils', function () {
   };
 
   return {
+
     getVisibleMinutes: function (m, step) {
       var year = m.year(),
         month = m.month(),
@@ -128,6 +129,7 @@ angular.module('datePicker').factory('datePickerUtils', function () {
 
       return hours;
     },
+
     isAfter: function (model, date) {
       return model && model.unix() >= date.unix();
     },
