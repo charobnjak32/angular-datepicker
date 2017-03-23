@@ -73,8 +73,6 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
         pickerID = element[0].id,
         highlightNow = !!attrs.highlightNow,
         now = scope.now = createMoment(),
-        viewDate = scope.viewDate = createMoment(scope.model || now),
-        modelDate = scope.modelDate = scope.model ? createMoment(scope.model) : null,
         autoclose = attrs.autoClose === 'true',
       // Either gets the 1st day from the attributes, or asks moment.js to give it to us as it is localized.
         firstDay = attrs.firstDay && attrs.firstDay >= 0 && attrs.firstDay <= 6 ? parseInt(attrs.firstDay, 10) : moment().weekday(0).day(),
@@ -84,6 +82,9 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
         clipDate,
         isNow,
         inValidRange;
+
+      scope.modelDate = scope.model ? createMoment(scope.model) : null;
+      scope.viewDate = createMoment(scope.model || now);
 
       datePickerUtils.setParams(tz, firstDay);
 
