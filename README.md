@@ -6,7 +6,6 @@
 -  MomentJS
 -  Moment Timezone (If timezones are being used)
 
-## Installation
 
 ## Repo info
 This repo is forked from https://github.com/g00fy-/angular-datepicker and contains some changes that I personaly needed for my projects along with some bug fixes.
@@ -15,6 +14,8 @@ Most notable changes:
 * Added a posibility to not have a date selected in the picker.
 * When there is min or max date is changed move and the current view doesn't have valid dates, move the view to the first valid date.
 * Changed the demo layout a bit
+
+## Installation
 
 ### via bower
 
