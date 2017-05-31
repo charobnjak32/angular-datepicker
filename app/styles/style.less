@@ -1,8 +1,8 @@
 @import "variables.less";
 @import "mixins.less";
 
-.date-picker-date-time {		
-  position: absolute;		
+.date-picker-date-time {
+  position: absolute;
 }
 
 .date-range .date-picker-date-time {
@@ -92,6 +92,13 @@
   }
 
   .disabled {
+    background: none;
+    color: #999999 !important;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .not-current-month {
     background: none;
     color: #999999 !important;
     cursor: default;
