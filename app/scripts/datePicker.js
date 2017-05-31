@@ -234,7 +234,7 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
               }
 
               if (week[j].month() !== date.month()) {
-                classList.push('not-current-month')
+                classList.push('not-current-month');
               }
               classes[i].push(classList.join(' '));
             }

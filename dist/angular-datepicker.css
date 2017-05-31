@@ -204,6 +204,12 @@
   background: none;
   color: #999999 !important;
   cursor: default;
+  pointer-events: none;
+}
+[date-picker] .not-current-month {
+  background: none;
+  color: #999999 !important;
+  cursor: default;
 }
 [date-picker] [ng-switch-when="year"] span,
 [date-picker] [ng-switch-when="month"] span,
