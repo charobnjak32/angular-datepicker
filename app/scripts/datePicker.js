@@ -245,7 +245,7 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
             compareFunc = params[1];
 
           for (i = 0; i < dates.length; i++) {
-            classList = '';
+            classList = [];
             if (datePickerUtils[compareFunc](date, dates[i])) {
               classList.push('active');
             }
