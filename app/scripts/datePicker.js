@@ -210,7 +210,7 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
       prepareViewData = function () {
         var view = scope.view,
           date = scope.viewDate,
-          classes = [], classList = '',
+          classes = [], classList = [],
           i, j;
 
         datePickerUtils.setParams(tz, firstDay);
@@ -221,18 +221,22 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
             week = weeks[i];
             classes.push([]);
             for (j = 0; j < week.length; j++) {
-              classList = '';
+              classList = [];
               if (datePickerUtils.isSameDay(scope.model, week[j])) {
-                classList += 'active';
+                classList.push('active');
               }
               if (highlightNow && isNow(week[j], view)) {
-                classList += ' now';
+                classList.push('now');
               }
               //if (week[j].month() !== date.month()) classList += ' disabled';
-              if (week[j].month() !== date.month() || !inValidRange(week[j])) {
-                classList += ' disabled';
+              if (!inValidRange(week[j])) {
+                classList.push('disabled');
               }
-              classes[i].push(classList);
+
+              if (week[j].month() !== date.month()) {
+                classList.push('not-current-month');
+              }
+              classes[i].push(classList.join(' '));
             }
           }
         } else {
@@ -241,17 +245,17 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
             compareFunc = params[1];
 
           for (i = 0; i < dates.length; i++) {
-            classList = '';
+            classList = [];
             if (datePickerUtils[compareFunc](date, dates[i])) {
-              classList += 'active';
+              classList.push('active');
             }
             if (highlightNow && isNow(dates[i], view)) {
-              classList += ' now';
+              classList.push('now');
             }
             if (!inValidRange(dates[i])) {
-              classList += ' disabled';
+              classList.push('disabled');
             }
-            classes.push(classList);
+            classes.push(classList.join(' '));
           }
         }
         scope.classes = classes;
