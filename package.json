@@ -3,7 +3,7 @@
   "version": "2.1.3",
   "main": "dist/angular-datepicker.js",
   "repository": {
-    "url": "https://github.com/g00fy-/angular-datepicker.git"
+    "url": "https://github.com/charobnjak32/angular-datepicker.git"
   },
   "dependencies": {},
   "devDependencies": {

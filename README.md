@@ -12,7 +12,8 @@ This repo is forked from https://github.com/g00fy-/angular-datepicker and contai
 
 Most notable changes:
 * Added a posibility to not have a date selected in the picker.
-* When there is min or max date is changed move and the current view doesn't have valid dates, move the view to the first valid date.
+* When there is min or max date current view is moved to the closest valid date
+* Added a positibility to add a panel class to the date-picker directive when using date-time directive (using an attribute `date-picker-panel-class`) 
 * Changed the demo layout a bit
 
 ## Installation
